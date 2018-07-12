@@ -8,15 +8,21 @@ class PostDetail extends Component {
 		const id = this.props.match.params.id;
 		this.props.fetchPost(id);
 	}
+
 	render(){
-		// posts[this.props.match.params.id];
-		console.log(this.props);
+		const {post} = this.props;
+
+		if (!post){
+			return (
+				<div>Loading...</div>
+			);
+		}
+
 		return (
 			<div>
-			PostDetail
-			<ul>
-				<li>{this.props.post ? this.props.post.title : 'not yet'}</li>
-			</ul>
+				<h3>{post.title}</h3>
+				<h6>Categories: {post.categories}</h6>
+				<p>{post.content}</p>
 			</div>
 		);
 	}
